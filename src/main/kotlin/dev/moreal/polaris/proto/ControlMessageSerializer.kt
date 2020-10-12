@@ -10,6 +10,7 @@ object ControlMessageSerializer : JsonContentPolymorphicSerializer<ControlMessag
     override fun selectDeserializer(element: JsonElement) = when (element.jsonObject.getValue("type").jsonPrimitive.toString()) {
         ControlMessageType.RequestTCPTunnel.name -> RequestTCPTunnel.serializer()
         ControlMessageType.ResponseTCPTunnel.name -> ResponseTCPTunnel.serializer()
+        ControlMessageType.NewProxy.name -> NewProxy.serializer()
         else -> throw IllegalArgumentException()
     }
 }
